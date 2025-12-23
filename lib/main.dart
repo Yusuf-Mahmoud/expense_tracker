@@ -9,6 +9,10 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Expense Tracker', home: SplashScreen(),debugShowCheckedModeBanner: false,);
+    return MaterialApp(
+      title: 'Expense Tracker',
+      home: SplashScreen(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }

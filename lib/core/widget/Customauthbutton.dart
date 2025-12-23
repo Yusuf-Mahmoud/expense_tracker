@@ -17,8 +17,8 @@ class CustomAuthButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
-      height: 55,
+      width: MediaQuery.of(context).size.width * 0.8,
+      height: MediaQuery.of(context).size.height * 0.07,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(

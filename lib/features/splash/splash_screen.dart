@@ -10,16 +10,16 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
   void initState() {
-    super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 5), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const OnBoarding()),
+        MaterialPageRoute(builder: (context) => OnBoarding()),
       );
     });
+    super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,11 +27,11 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children:  [
             CircularProgressIndicator(),
             SizedBox(height: 20),
             Text(
-              'SpendWise',
+              'Spend Wise',
               style: TextStyle(fontSize: 24, color: Colors.white),
             ),
           ],
