@@ -1,8 +1,9 @@
 import 'package:expense_tracker/core/theme/theme.dart';
 import 'package:expense_tracker/core/widget/customauthbutton.dart';
-import 'package:expense_tracker/features/Onboarding/widget/onBoardingItem.dart';
+import 'package:expense_tracker/features/Onboarding/widget/on_boardingItem.dart';
 import 'package:expense_tracker/features/auth/login/login_screen.dart';
 import 'package:expense_tracker/features/auth/signup/signup_screen.dart';
+import 'package:expense_tracker/core/SharedPreferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
 class OnBoarding extends StatefulWidget {
@@ -10,6 +11,7 @@ class OnBoarding extends StatefulWidget {
   @override
   State<OnBoarding> createState() => _OnBoardingState();
 }
+
 class _OnBoardingState extends State<OnBoarding> {
   final PageController _pageController = PageController();
   int currentIndex = 0;
@@ -72,9 +74,15 @@ class _OnBoardingState extends State<OnBoarding> {
             backgroundColor: Colormanager.primary,
             textColor: Colors.white,
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return SignupScreen();
-              }));
+              AppPrefs.setOnBoardingDone();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return SignupScreen();
+                  },
+                ),
+              );
             },
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.03),
@@ -83,9 +91,15 @@ class _OnBoardingState extends State<OnBoarding> {
             backgroundColor: Colors.deepPurple.shade50,
             textColor: Colormanager.primary,
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return LoginScreen();
-              }));
+              AppPrefs.setOnBoardingDone();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return LoginScreen();
+                  },
+                ),
+              );
             },
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.05),

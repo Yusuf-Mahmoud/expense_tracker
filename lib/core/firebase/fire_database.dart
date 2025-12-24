@@ -17,7 +17,6 @@ class FireDatabase {
       email: email,
       password: password,
       currency: "EGP",
-      createdAt: DateTime.now(),
     );
     await firestore
         .collection('Users')
@@ -40,6 +39,6 @@ class FireDatabase {
     } catch (e) {
       print('Error logging in user: $e');
     }
-    return UserModel(email: '', password: '', name: '', currency: '', createdAt: DateTime.now());
+    return UserModel(email: '', password: '', name: '', currency: '',);
   }
 }

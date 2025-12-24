@@ -4,7 +4,7 @@ import 'package:expense_tracker/core/widget/customtextfield.dart';
 import 'package:expense_tracker/features/auth/cubit/logic.dart';
 import 'package:expense_tracker/features/auth/cubit/state.dart';
 import 'package:expense_tracker/features/auth/signup/signup_screen.dart';
-import 'package:expense_tracker/features/home/home_screen.dart';
+import 'package:expense_tracker/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,7 +33,7 @@ class LoginScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return HomeScreen();
+                      return const SplashScreen();
                     },
                   ),
                 );

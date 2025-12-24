@@ -4,6 +4,7 @@ import 'package:expense_tracker/core/widget/customtextfield.dart';
 import 'package:expense_tracker/features/auth/cubit/logic.dart';
 import 'package:expense_tracker/features/auth/cubit/state.dart';
 import 'package:expense_tracker/features/auth/login/login_screen.dart';
+import 'package:expense_tracker/features/pin/create_pin_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,7 +33,10 @@ class _SignupScreenState extends State<SignupScreen> {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text('Sign up successful')));
-          Navigator.pop(context);
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (_) => const CreatePinScreen()),
+          );
         } else if (state is AuthFailure) {
           ScaffoldMessenger.of(
             context,
