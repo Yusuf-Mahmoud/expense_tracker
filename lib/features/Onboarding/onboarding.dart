@@ -1,19 +1,18 @@
 import 'package:expense_tracker/core/theme/theme.dart';
 import 'package:expense_tracker/core/widget/customauthbutton.dart';
 import 'package:expense_tracker/features/Onboarding/widget/onBoardingItem.dart';
+import 'package:expense_tracker/features/auth/login/login_screen.dart';
+import 'package:expense_tracker/features/auth/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
-
   @override
   State<OnBoarding> createState() => _OnBoardingState();
 }
-
 class _OnBoardingState extends State<OnBoarding> {
   final PageController _pageController = PageController();
   int currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,14 +71,22 @@ class _OnBoardingState extends State<OnBoarding> {
             text: 'Sign UP',
             backgroundColor: Colormanager.primary,
             textColor: Colors.white,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return SignupScreen();
+              }));
+            },
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.03),
           CustomAuthButton(
             text: 'Login',
             backgroundColor: Colors.deepPurple.shade50,
             textColor: Colormanager.primary,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return LoginScreen();
+              }));
+            },
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.05),
         ],
