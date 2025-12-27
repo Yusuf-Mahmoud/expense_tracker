@@ -1,5 +1,5 @@
 
-import 'package:expense_tracker/core/firebase/model/user.dart';
+import 'package:expense_tracker/core/model/user.dart';
 
 class AuthState {}
 
