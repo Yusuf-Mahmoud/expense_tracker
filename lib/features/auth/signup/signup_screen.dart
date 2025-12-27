@@ -98,7 +98,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: CustomAuthButton(
-                    backgroundColor: Colormanager.primary,
+                    backgroundColor: Colormanager.primaryViolet,
                     textColor: Colors.white,
                     text: 'Sign Up',
                     onPressed: () {
@@ -136,7 +136,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     child: Text(
                       'Log In',
                       style: TextStyle(
-                        color: Colormanager.primary,
+                        color: Colormanager.  primaryViolet,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

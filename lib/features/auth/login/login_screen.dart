@@ -55,7 +55,7 @@ class LoginScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
-                      color: Colormanager.primary,
+                      color: Colormanager.primaryViolet,
                     ),
                   ),
                   SizedBox(height: 20),
@@ -95,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                           );
                         }
                       },
-                      backgroundColor: Colormanager.primary,
+                      backgroundColor: Colormanager.primaryViolet,
                       textColor: Colors.white,
                     ),
                   ),
@@ -122,7 +122,7 @@ class LoginScreen extends StatelessWidget {
                         child: Text(
                           'Sign Up',
                           style: TextStyle(
-                            color: Colormanager.primary,
+                            color: Colormanager.primaryViolet,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

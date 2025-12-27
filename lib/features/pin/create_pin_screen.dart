@@ -43,7 +43,7 @@ class _CreatePinScreenState extends State<CreatePinScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colormanager.primary,
+      backgroundColor: Colormanager.primaryViolet,
       body: SafeArea(
         child: Column(
           children: [

@@ -128,7 +128,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colormanager.primary,
+      backgroundColor: Colormanager.primaryViolet,
       body: SafeArea(
         child: Column(
           children: [
