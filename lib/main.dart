@@ -12,7 +12,7 @@ import 'package:hive_flutter/adapters.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-   Hive.registerAdapter(ExpenseModelAdapter());
+  Hive.registerAdapter(ExpenseModelAdapter());
   await Hive.openBox<ExpenseModel>('expenses_box');
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MyApp());
@@ -23,16 +23,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => AuthCubit()),
-      
-      BlocProvider(
-      create: (_) => ExpenseCubit(HiveLocalStorage()),
-    ),],
+      providers: [
+        BlocProvider(create: (context) => AuthCubit()),
+
+        BlocProvider(create: (_) => ExpenseCubit(HiveLocalStorage())),
+      ],
       child: MaterialApp(
         title: 'Expense Tracker',
         home: SplashScreen(),
         debugShowCheckedModeBanner: false,
-        
       ),
     );
   }

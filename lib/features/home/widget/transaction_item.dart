@@ -12,32 +12,29 @@ Widget buildTransactionItem(ExpenseModel e, BuildContext context, int index) {
     orElse: () =>
         ExpenseCategory(name: 'Other', icon: Icons.money, color: Colors.grey),
   );
+
   final IconData displayIcon = e.isIncome
       ? Icons.account_balance_wallet
       : categoryData.icon;
   final Color displayColor = e.isIncome
       ? Colormanager.incomeGreen
       : categoryData.color;
+
   return InkWell(
     onDoubleTap: () => context.read<ExpenseCubit>().deleteExpense(index),
-    child: Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color(0xFFFCFCFC),
-        borderRadius: BorderRadius.circular(24),
-      ),
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
-              color: displayColor.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(16),
+              color: displayColor.withOpacity(0.15),
+              borderRadius: BorderRadius.circular(18),
             ),
-            child: Icon(displayIcon, color: displayColor),
+            child: Icon(displayIcon, color: displayColor, size: 28),
           ),
-          SizedBox(width: 16),
+          const SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,11 +44,13 @@ Widget buildTransactionItem(ExpenseModel e, BuildContext context, int index) {
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
+                    color: Colors.black87,
                   ),
                 ),
+                const SizedBox(height: 4),
                 Text(
-                  e.category,
-                  style:  TextStyle(color: Colors.grey, fontSize: 13),
+                  e.isIncome ? "Income" : "Expense",
+                  style: const TextStyle(color: Colors.grey, fontSize: 14),
                 ),
               ],
             ),
@@ -60,18 +59,19 @@ Widget buildTransactionItem(ExpenseModel e, BuildContext context, int index) {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                "${e.isIncome ? "+" : "-"}\$${e.amount}",
+                "${e.isIncome ? "+" : "-"}\$${e.amount.toStringAsFixed(0)}",
                 style: TextStyle(
                   color: e.isIncome
                       ? Colormanager.incomeGreen
                       : Colormanager.expenseRed,
-                  fontSize: 16,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              const SizedBox(height: 4),
               Text(
-                "${e.date.hour}:${e.date.minute.toString().padLeft(2, '0')}",
-                style: const TextStyle(color: Colors.grey, fontSize: 12),
+                "${e.date.hour}:${e.date.minute.toString().padLeft(2, '0')} ${e.date.hour >= 12 ? 'PM' : 'AM'}",
+                style: const TextStyle(color: Colors.grey, fontSize: 13),
               ),
             ],
           ),

@@ -16,7 +16,7 @@ class FireDatabase {
       name: name,
       email: email,
       password: password,
-      currency: "EGP",
+      
     );
     await firestore
         .collection('Users')
@@ -39,6 +39,6 @@ class FireDatabase {
     } catch (e) {
       print('Error logging in user: $e');
     }
-    return UserModel(email: '', password: '', name: '', currency: '',);
+    return UserModel(email: '', password: '', name: '');
   }
 }
