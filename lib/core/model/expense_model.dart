@@ -4,35 +4,26 @@ part 'expense_model.g.dart';
 
 @HiveType(typeId: 0)
 class ExpenseModel extends HiveObject {
-
   @HiveField(0)
-  String id;
-
-  @HiveField(1)
   String title;
 
-  @HiveField(2)
+  @HiveField(1)
   double amount;
 
-  @HiveField(3)
+  @HiveField(2)
   String category;
 
-  @HiveField(4)
+  @HiveField(3)
   DateTime date;
 
-  @HiveField(5)
-  bool isIncome; 
-
-  @HiveField(6)
-  String? note;
+  @HiveField(4)
+  bool isIncome;
 
   ExpenseModel({
-    required this.id,
     required this.title,
     required this.amount,
     required this.category,
     required this.date,
     required this.isIncome,
-    this.note,
   });
 }

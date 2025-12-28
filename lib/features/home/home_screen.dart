@@ -3,14 +3,22 @@ import 'package:expense_tracker/features/home/widget/appheader.dart';
 import 'package:expense_tracker/features/home/widget/navitem.dart';
 import 'package:expense_tracker/features/home/widget/timecon.dart';
 import 'package:expense_tracker/features/home/widget/transaction_item.dart';
+import 'package:expense_tracker/features/moneyflow/add_income_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:expense_tracker/features/addexpense/add_expense_screen.dart';
+import 'package:expense_tracker/features/moneyflow/add_expense_screen.dart';
 import 'package:expense_tracker/features/home/cubit/logic.dart';
 import 'package:expense_tracker/features/home/cubit/state.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool isFabOpen = false;
 
   @override
   Widget build(BuildContext context) {
@@ -21,30 +29,27 @@ class HomeScreen extends StatelessWidget {
             body: Center(child: CircularProgressIndicator()),
           );
         }
-
         final balance = state.income - state.expense;
-
         return Scaffold(
           backgroundColor: Colors.white,
           body: SingleChildScrollView(
             child: Column(
               children: [
-                AppHeader(balance, state.income, state.expense),
+                appheader(balance, state.income, state.expense),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 20),
-                      const Text(
+                       SizedBox(height: 20),
+                       Text(
                         "Spend Frequency",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 10),
-
+                      SizedBox(height: 10),
                       Container(
                         height: 160,
                         width: double.infinity,
@@ -52,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                           color: Colormanager.primaryViolet.withOpacity(0.05),
                           borderRadius: BorderRadius.circular(16),
                         ),
-                        child: const Center(
+                        child:  Center(
                           child: Icon(
                             Icons.show_chart,
                             size: 50,
@@ -60,16 +65,13 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-
-                      const SizedBox(height: 20),
-
+                      SizedBox(height: 20),
                       buildTimeFilter(),
-
-                      const SizedBox(height: 20),
+                      SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
+                           Text(
                             "Recent Transaction",
                             style: TextStyle(
                               fontSize: 18,
@@ -78,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                           TextButton(
                             onPressed: () {},
-                            child: const Text(
+                            child:  Text(
                               "See All",
                               style: TextStyle(
                                 color: Colormanager.primaryViolet,
@@ -87,10 +89,9 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-
                       ListView.builder(
                         shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
+                        physics:  NeverScrollableScrollPhysics(),
                         itemCount: state.expenses.length,
                         itemBuilder: (context, index) {
                           final transaction = state.expenses[index];
@@ -101,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                           );
                         },
                       ),
-                      const SizedBox(height: 80),
+                      SizedBox(height: 80),
                     ],
                   ),
                 ),
@@ -110,17 +111,80 @@ class HomeScreen extends StatelessWidget {
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: Colormanager.primaryViolet,
-            shape: const CircleBorder(),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => AddExpenseScreen()),
-              );
-            },
-            child: const Icon(Icons.add, color: Colors.white, size: 35),
+          floatingActionButton: SizedBox(
+            width: 130,
+            height: 220,
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 300),
+                  bottom: isFabOpen ? 140 : 0,
+                  child: AnimatedOpacity(
+                    opacity: isFabOpen ? 1 : 0,
+                    duration:  Duration(milliseconds: 300),
+                    child: FloatingActionButton(
+                      heroTag: 'expense',
+                      mini: true,
+                      backgroundColor: Colormanager.expenseRed,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => AddExpenseScreen(),
+                          ),
+                        );
+                      },
+                      child:  Icon(Icons.trending_down_rounded),
+                    ),
+                  ),
+                ),
+                AnimatedPositioned(
+                  duration:  Duration(milliseconds: 300),
+                  bottom: isFabOpen ? 80 : 0,
+                  child: AnimatedOpacity(
+                    opacity: isFabOpen ? 1 : 0,
+                    duration: const Duration(milliseconds: 300),
+                    child: FloatingActionButton(
+                      heroTag: 'income',
+                      mini: true,
+                      backgroundColor: Colormanager.incomeGreen,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => AddIncomeScreen(),
+                          ),
+                        );
+                      },
+                      child: const Icon(Icons.add),
+                    ),
+                  ),
+                ),
+
+                FloatingActionButton(
+                  heroTag: 'main',
+                  backgroundColor: Colormanager.primaryViolet,
+                  shape: const CircleBorder(),
+                  onPressed: () {
+                    setState(() {
+                      isFabOpen = !isFabOpen;
+                    });
+                  },
+                  child: AnimatedRotation(
+                    turns: isFabOpen ? 0.125 : 0,
+                    duration: const Duration(milliseconds: 300),
+                    child: Icon(
+                      isFabOpen ? Icons.close : Icons.add,
+                      color: Colors.white,
+                      size: 35,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
+
           bottomNavigationBar: buildBottomAppBar(),
         );
       },

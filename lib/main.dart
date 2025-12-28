@@ -12,7 +12,7 @@ import 'package:hive_flutter/adapters.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  Hive.registerAdapter(ExpenseModelAdapter());
+   Hive.registerAdapter(ExpenseModelAdapter());
   await Hive.openBox<ExpenseModel>('expenses_box');
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MyApp());

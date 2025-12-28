@@ -1,6 +1,6 @@
 import 'package:expense_tracker/core/theme/theme.dart';
 import 'package:expense_tracker/core/widget/customauthbutton.dart';
-import 'package:expense_tracker/features/Onboarding/widget/on_boardingItem.dart';
+import 'package:expense_tracker/features/Onboarding/widget/on_boarding_item.dart';
 import 'package:expense_tracker/features/auth/login/login_screen.dart';
 import 'package:expense_tracker/features/auth/signup/signup_screen.dart';
 import 'package:expense_tracker/core/SharedPreferences/shared_preferences.dart';

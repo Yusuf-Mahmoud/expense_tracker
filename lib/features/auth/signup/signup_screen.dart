@@ -54,7 +54,7 @@ class _SignupScreenState extends State<SignupScreen> {
         body: Form(
           key: formKey,
           child: Column(
-            mainAxisAlignment: .center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextFormApp(
                 label: 'Email',
@@ -136,7 +136,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     child: Text(
                       'Log In',
                       style: TextStyle(
-                        color: Colormanager.  primaryViolet,
+                        color: Colormanager.primaryViolet,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
