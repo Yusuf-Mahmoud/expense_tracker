@@ -1,16 +1,22 @@
-# expense_tracker
+# Expense Tracker
 
-A new Flutter project.
+A Flutter application for tracking personal expenses with user authentication, local storage, and efficient state management.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- **User Authentication**: Secure login and registration using Firebase Authentication.
+- **Expense Management**: Add, edit, and delete expenses with categories and amounts.
+- **Local Storage**: Persistent data storage using Hive for offline access.
+- **State Management**: Implemented with Cubit (part of the Bloc library) for predictable state handling.
+- **Shared Preferences**: Used for storing user preferences and settings.
+- **Responsive UI**: Designed to work seamlessly across different screen sizes.
 
-A few resources to get you started if this is your first Flutter project:
+## Technologies Used
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Flutter**: Framework for building the cross-platform mobile application.
+- **Firebase Authentication**: For user login and registration.
+- **Hive**: NoSQL database for local data storage.
+- **Cubit (Bloc)**: State management solution for managing app state.
+- **SharedPreferences**: For storing simple key-value pairs locally.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
