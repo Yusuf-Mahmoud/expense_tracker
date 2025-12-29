@@ -1,7 +1,7 @@
 import 'package:expense_tracker/features/home/home_content.dart';
 import 'package:expense_tracker/features/home/transactions_page.dart';
-import 'package:expense_tracker/features/moneyflow/add_expense_screen.dart';
-import 'package:expense_tracker/features/moneyflow/add_income_screen.dart';
+import 'package:expense_tracker/features/home/moneyflow/add_expense_screen.dart';
+import 'package:expense_tracker/features/home/moneyflow/add_income_screen.dart';
 import 'package:expense_tracker/features/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/core/theme/theme.dart';
@@ -20,21 +20,21 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _pages = [
     HomeContent(),
     TransactionsPage(),
-    Center(child: Text("Budget Screen")),
+    // Center(child: Text("Budget Screen")),
     ProfileScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorManager.white,
       body: _pages[_currentIndex],
 
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: _buildFabStack(),
 
       bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
+        shape: CircularNotchedRectangle(),
         notchMargin: 10,
         child: SizedBox(
           height: 60,
@@ -43,8 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               buildNavItem(Icons.home_filled, "Home", 0),
               buildNavItem(Icons.swap_horiz, "Transaction", 1),
-              SizedBox(width: 40),
-              buildNavItem(Icons.pie_chart, "Budget", 2),
+              SizedBox(width: 35),
+              // buildNavItem(Icons.pie_chart, "Budget", 2),
               buildNavItem(Icons.person, "Profile", 3),
             ],
           ),
@@ -62,13 +62,13 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Icon(
             icon,
-            color: isSelected ? Colormanager.primaryViolet : Colors.grey,
+            color: isSelected ? ColorManager.primaryViolet : Colors.grey,
           ),
           Text(
             label,
             style: TextStyle(
               fontSize: 10,
-              color: isSelected ? Colormanager.primaryViolet : Colors.grey,
+              color: isSelected ? ColorManager.primaryViolet : Colors.grey,
             ),
           ),
         ],
@@ -84,15 +84,15 @@ class _HomeScreenState extends State<HomeScreen> {
         alignment: Alignment.bottomCenter,
         children: [
           AnimatedPositioned(
-            duration:  Duration(milliseconds: 300),
+            duration: Duration(milliseconds: 300),
             bottom: isFabOpen ? 140 : 0,
             child: AnimatedOpacity(
               opacity: isFabOpen ? 1 : 0,
-              duration:  Duration(milliseconds: 300),
+              duration: Duration(milliseconds: 300),
               child: FloatingActionButton(
                 heroTag: 'expense',
                 mini: true,
-                backgroundColor: Colormanager.expenseRed,
+                backgroundColor: ColorManager.expenseRed,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -116,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: FloatingActionButton(
                 heroTag: 'income',
                 mini: true,
-                backgroundColor: Colormanager.incomeGreen,
+                backgroundColor: ColorManager.incomeGreen,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -130,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           FloatingActionButton(
             heroTag: 'main',
-            backgroundColor: Colormanager.primaryViolet,
+            backgroundColor: ColorManager.primaryViolet,
             shape: const CircleBorder(),
             onPressed: () => setState(() => isFabOpen = !isFabOpen),
             child: AnimatedRotation(

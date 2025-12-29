@@ -16,7 +16,6 @@ class FireDatabase {
       name: name,
       email: email,
       password: password,
-      
     );
     await firestore
         .collection('Users')
@@ -40,5 +39,21 @@ class FireDatabase {
       print('Error logging in user: $e');
     }
     return UserModel(email: '', password: '', name: '');
+  }
+
+  Future<void> updateUserProfile({
+    String? name,
+    String? email,
+    String? imagePath,
+  }) async {
+    final user = auth.currentUser;
+    if (user != null) {
+      Map<String, dynamic> updatedData = {};
+      if (name != null) updatedData['name'] = name;
+      if (email != null) updatedData['email'] = email;
+      if (imagePath != null) updatedData['profileImage'] = imagePath;
+
+      await firestore.collection('Users').doc(user.uid).update(updatedData);
+    }
   }
 }

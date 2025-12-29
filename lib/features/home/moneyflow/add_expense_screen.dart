@@ -1,8 +1,9 @@
 import 'package:expense_tracker/core/model/expense_model.dart';
+import 'package:expense_tracker/core/theme/theme.dart';
 import 'package:expense_tracker/features/home/cubit/logic.dart';
-import 'package:expense_tracker/features/moneyflow/widget/continue.dart';
-import 'package:expense_tracker/features/moneyflow/widget/customtextfield.dart';
-import 'package:expense_tracker/features/moneyflow/widget/repeat_widget.dart';
+import 'package:expense_tracker/features/home/moneyflow/widget/continue.dart';
+import 'package:expense_tracker/features/home/moneyflow/widget/customtextfield.dart';
+import 'package:expense_tracker/features/home/moneyflow/widget/repeat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,7 +21,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFD3C4A),
+      backgroundColor: ColorManager.expenseRed,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -95,7 +96,6 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
               }
 
               final expense = ExpenseModel(
-              
                 title: titleController.text.isEmpty
                     ? "Expense"
                     : titleController.text,

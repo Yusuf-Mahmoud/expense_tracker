@@ -62,11 +62,11 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
           height: 16,
           decoration: BoxDecoration(
             color: index < enteredPin.length
-                ? (isError ? Colors.red : Colors.white)
+                ? (isError ? ColorManager.expenseRed : Colors.white)
                 : Colors.transparent,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: isError ? Colors.red : Colors.white,
+              color: isError ? ColorManager.expenseRed : Colors.white,
               width: 2,
             ),
           ),
@@ -128,7 +128,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colormanager.primaryViolet,
+      backgroundColor: ColorManager.primaryViolet,
       body: SafeArea(
         child: Column(
           children: [
@@ -146,10 +146,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
             if (isError)
               const Padding(
                 padding: EdgeInsets.only(top: 12),
-                child: Text(
-                  'Wrong PIN',
-                  style: TextStyle(color: Colors.red),
-                ),
+                child: Text('Wrong PIN', style: TextStyle(color: Colors.red)),
               ),
             const SizedBox(height: 40),
             pinKeyboard(),

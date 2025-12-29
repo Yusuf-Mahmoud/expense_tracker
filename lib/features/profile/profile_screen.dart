@@ -1,7 +1,11 @@
+import 'package:expense_tracker/core/theme/theme.dart';
 import 'package:expense_tracker/features/auth/cubit/logic.dart';
 import 'package:expense_tracker/features/auth/cubit/state.dart';
 import 'package:expense_tracker/features/auth/login/login_screen.dart';
+import 'package:expense_tracker/features/profile/edit_screen.dart';
+import 'package:expense_tracker/features/profile/setting/setting_screen.dart';
 import 'package:expense_tracker/features/profile/widget/profile_option.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -65,22 +69,34 @@ class ProfileScreen extends StatelessWidget {
                       buildProfileOption(
                         icon: Icons.settings,
                         title: "Settings",
-                        iconColor: Colors.deepPurple,
-                        onTap: () {},
+                        iconColor: ColorManager.primaryViolet,
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => SettingScreen(),
+                            ),
+                          );
+                        },
                       ),
-                      const Divider(height: 1, indent: 60),
+                      Divider(height: 1, indent: 60),
                       buildProfileOption(
                         icon: Icons.edit,
                         title: "Edit Profile",
                         iconColor: Colors.blue,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => EditProfilePage(),
+                            ),
+                          );
+                        },
                       ),
                       const Divider(height: 1, indent: 60),
                       buildProfileOption(
                         icon: Icons.logout,
                         title: "Logout",
-                        iconColor: Colors.red,
-                        textColor: Colors.red,
+                        iconColor: ColorManager.expenseRed,
+                        textColor: ColorManager.expenseRed,
                         onTap: () {
                           Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(

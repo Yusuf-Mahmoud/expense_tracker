@@ -33,14 +33,14 @@ Widget appheader(double balance, double income, double expense) {
             _buildStatCard(
               "Income",
               income,
-              Colormanager.incomeGreen,
+              ColorManager.incomeGreen,
               Icons.wallet_rounded,
             ),
             const SizedBox(width: 15),
             _buildStatCard(
               "Expenses",
               expense,
-              Colormanager.expenseRed,
+              ColorManager.expenseRed,
               Icons.trending_down_rounded,
             ),
           ],

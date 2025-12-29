@@ -1,3 +1,4 @@
+import 'package:expense_tracker/core/theme/theme.dart';
 import 'package:expense_tracker/features/home/cubit/logic.dart';
 import 'package:expense_tracker/features/home/cubit/state.dart';
 import 'package:expense_tracker/features/home/widget/transaction_item.dart';
@@ -10,7 +11,7 @@ class TransactionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorManager.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -24,9 +25,9 @@ class TransactionsPage extends StatelessWidget {
                   builder: (context, state) {
                     if (state is ExpenseLoaded) {
                       final expenses = state.expenses;
-                      
+
                       if (expenses.isEmpty) {
-                        return  Center(child: Text("No transactions found"));
+                        return Center(child: Text("No transactions found"));
                       }
                       final sortedExpenses = List.from(expenses)
                         ..sort((a, b) => b.date.compareTo(a.date));
@@ -42,7 +43,7 @@ class TransactionsPage extends StatelessWidget {
                             headerText = _getHeaderText(expense.date);
                           } else {
                             final prevExpense = sortedExpenses[index - 1];
-                            if (expense.date.day != prevExpense.date.day || 
+                            if (expense.date.day != prevExpense.date.day ||
                                 expense.date.month != prevExpense.date.month) {
                               showHeader = true;
                               headerText = _getHeaderText(expense.date);
@@ -53,7 +54,10 @@ class TransactionsPage extends StatelessWidget {
                             children: [
                               if (showHeader)
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 20, bottom: 10),
+                                  padding: const EdgeInsets.only(
+                                    top: 20,
+                                    bottom: 10,
+                                  ),
                                   child: Text(
                                     headerText,
                                     style: const TextStyle(
@@ -78,6 +82,7 @@ class TransactionsPage extends StatelessWidget {
       ),
     );
   }
+
   Widget _buildHeader(BuildContext context) {
     return Column(
       children: [
@@ -86,7 +91,9 @@ class TransactionsPage extends StatelessWidget {
           children: [
             PopupMenuButton<int>(
               onSelected: (months) {
-                context.read<ExpenseCubit>().filterExpenses(monthsLimit: months);
+                context.read<ExpenseCubit>().filterExpenses(
+                  monthsLimit: months,
+                );
               },
               itemBuilder: (context) => [
                 const PopupMenuItem(value: 1, child: Text("Last Month")),
@@ -96,7 +103,10 @@ class TransactionsPage extends StatelessWidget {
                 const PopupMenuItem(value: null, child: Text("All Time")),
               ],
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey.shade300),
                   borderRadius: BorderRadius.circular(20),
@@ -120,7 +130,7 @@ class TransactionsPage extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
-            color: const Color(0xFFEEE5FF),
+            color: ColorManager.white,
             borderRadius: BorderRadius.circular(15),
           ),
           child: const Row(
@@ -129,17 +139,18 @@ class TransactionsPage extends StatelessWidget {
               Text(
                 "See your financial report",
                 style: TextStyle(
-                  color: Color(0xFF7F3DFF),
+                  color: ColorManager.primaryViolet,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Icon(Icons.chevron_right, color: Color(0xFF7F3DFF)),
+              Icon(Icons.chevron_right, color: ColorManager.primaryViolet),
             ],
           ),
         ),
       ],
     );
   }
+
   void _showCategoryFilter(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -147,13 +158,23 @@ class TransactionsPage extends StatelessWidget {
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) {
-        final categories = ['All', 'Bills', 'Shopping', 'Food', 'Salary', 'Transportation'];
+        final categories = [
+          'All',
+          'Bills',
+          'Shopping',
+          'Food',
+          'Salary',
+          'Transportation',
+        ];
         return Container(
           padding: const EdgeInsets.all(20),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text("Filter by Category", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              const Text(
+                "Filter by Category",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
               const SizedBox(height: 20),
               Wrap(
                 spacing: 10,
@@ -161,7 +182,9 @@ class TransactionsPage extends StatelessWidget {
                   return ActionChip(
                     label: Text(cat),
                     onPressed: () {
-                      context.read<ExpenseCubit>().filterExpenses(category: cat);
+                      context.read<ExpenseCubit>().filterExpenses(
+                        category: cat,
+                      );
                       Navigator.pop(context);
                     },
                   );
@@ -173,6 +196,7 @@ class TransactionsPage extends StatelessWidget {
       },
     );
   }
+
   String _getHeaderText(DateTime date) {
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);

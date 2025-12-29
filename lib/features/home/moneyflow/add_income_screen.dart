@@ -1,8 +1,9 @@
 import 'package:expense_tracker/core/model/expense_model.dart';
+import 'package:expense_tracker/core/theme/theme.dart';
 import 'package:expense_tracker/features/home/cubit/logic.dart';
-import 'package:expense_tracker/features/moneyflow/widget/continue.dart';
-import 'package:expense_tracker/features/moneyflow/widget/customtextfield.dart';
-import 'package:expense_tracker/features/moneyflow/widget/repeat_widget.dart';
+import 'package:expense_tracker/features/home/moneyflow/widget/continue.dart';
+import 'package:expense_tracker/features/home/moneyflow/widget/customtextfield.dart';
+import 'package:expense_tracker/features/home/moneyflow/widget/repeat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,7 +20,7 @@ class _AddIncomeScreenState extends State<AddIncomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF00A86B),
+      backgroundColor: ColorManager.incomeGreen,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,

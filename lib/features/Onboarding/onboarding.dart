@@ -71,7 +71,7 @@ class _OnBoardingState extends State<OnBoarding> {
           SizedBox(height: MediaQuery.of(context).size.height * 0.05),
           CustomAuthButton(
             text: 'Sign UP',
-            backgroundColor: Colormanager.primaryViolet,
+            backgroundColor: ColorManager.primaryViolet,
             textColor: Colors.white,
             onPressed: () {
               AppPrefs.setOnBoardingDone();
@@ -89,7 +89,7 @@ class _OnBoardingState extends State<OnBoarding> {
           CustomAuthButton(
             text: 'Login',
             backgroundColor: Colors.deepPurple.shade50,
-            textColor: Colormanager.primaryViolet,
+            textColor: ColorManager.primaryViolet,
             onPressed: () {
               AppPrefs.setOnBoardingDone();
               Navigator.push(

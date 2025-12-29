@@ -17,7 +17,7 @@ Widget buildTransactionItem(ExpenseModel e, BuildContext context, int index) {
       ? Icons.account_balance_wallet
       : categoryData.icon;
   final Color displayColor = e.isIncome
-      ? Colormanager.incomeGreen
+      ? ColorManager.incomeGreen
       : categoryData.color;
 
   return InkWell(
@@ -29,6 +29,7 @@ Widget buildTransactionItem(ExpenseModel e, BuildContext context, int index) {
           Container(
             padding: const EdgeInsets.all(14),
             decoration: BoxDecoration(
+              // ignore: deprecated_member_use
               color: displayColor.withOpacity(0.15),
               borderRadius: BorderRadius.circular(18),
             ),
@@ -62,8 +63,8 @@ Widget buildTransactionItem(ExpenseModel e, BuildContext context, int index) {
                 "${e.isIncome ? "+" : "-"}\$${e.amount.toStringAsFixed(0)}",
                 style: TextStyle(
                   color: e.isIncome
-                      ? Colormanager.incomeGreen
-                      : Colormanager.expenseRed,
+                      ? ColorManager.incomeGreen
+                      : ColorManager.expenseRed,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),

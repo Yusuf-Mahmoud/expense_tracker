@@ -1,3 +1,4 @@
+import 'package:expense_tracker/core/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class RepeatSwitch extends StatelessWidget {
@@ -13,14 +14,20 @@ class RepeatSwitch extends StatelessWidget {
         const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Repeat", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
-            Text("Repeat transaction", style: TextStyle(fontSize: 12, color: Colors.grey)),
+            Text(
+              "Repeat",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            ),
+            Text(
+              "Repeat transaction",
+              style: TextStyle(fontSize: 12, color: Colors.grey),
+            ),
           ],
         ),
         Switch(
           value: value,
           onChanged: onChanged,
-          activeColor: const Color(0xFF7F3DFF),
+          activeColor: ColorManager.primaryViolet,
         ),
       ],
     );

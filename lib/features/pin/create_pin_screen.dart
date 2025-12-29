@@ -43,7 +43,7 @@ class _CreatePinScreenState extends State<CreatePinScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colormanager.primaryViolet,
+      backgroundColor: ColorManager.primaryViolet,
       body: SafeArea(
         child: Column(
           children: [
@@ -59,10 +59,7 @@ class _CreatePinScreenState extends State<CreatePinScreen> {
             const SizedBox(height: 24),
             pinDots(pin),
             const SizedBox(height: 40),
-            pinKeyboard(
-              onNumberTap: onNumberTap,
-              onDelete: onDelete,
-            ),
+            pinKeyboard(onNumberTap: onNumberTap, onDelete: onDelete),
             const Spacer(),
             ElevatedButton(
               onPressed: pin.length == 4 ? savePin : null,
@@ -75,6 +72,7 @@ class _CreatePinScreenState extends State<CreatePinScreen> {
     );
   }
 }
+
 Widget pinDots(String pin) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -92,10 +90,8 @@ Widget pinDots(String pin) {
     }),
   );
 }
-Widget pinButton({
-  required String text,
-  required VoidCallback onTap,
-}) {
+
+Widget pinButton({required String text, required VoidCallback onTap}) {
   return GestureDetector(
     onTap: onTap,
     child: Container(
@@ -117,6 +113,7 @@ Widget pinButton({
     ),
   );
 }
+
 Widget pinKeyboard({
   required Function(String) onNumberTap,
   required VoidCallback onDelete,
@@ -136,15 +133,9 @@ Widget pinKeyboard({
             children: row.map((item) {
               if (item.isEmpty) return const SizedBox(width: 70);
               if (item == '⌫') {
-                return pinButton(
-                  text: item,
-                  onTap: onDelete,
-                );
+                return pinButton(text: item, onTap: onDelete);
               }
-              return pinButton(
-                text: item,
-                onTap: () => onNumberTap(item),
-              );
+              return pinButton(text: item, onTap: () => onNumberTap(item));
             }).toList(),
           ),
         ),
