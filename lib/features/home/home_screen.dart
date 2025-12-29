@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _pages = [
     HomeContent(),
     TransactionsPage(),
-    // Center(child: Text("Budget Screen")),
+    Center(child: Text("Budget Screen")),
     ProfileScreen(),
   ];
 
@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
               buildNavItem(Icons.home_filled, "Home", 0),
               buildNavItem(Icons.swap_horiz, "Transaction", 1),
               SizedBox(width: 35),
-              // buildNavItem(Icons.pie_chart, "Budget", 2),
+              buildNavItem(Icons.pie_chart, "Budget", 2),
               buildNavItem(Icons.person, "Profile", 3),
             ],
           ),

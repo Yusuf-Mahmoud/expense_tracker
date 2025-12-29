@@ -71,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircularProgressIndicator(),
-            SizedBox(height: 20),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             Text(
               'Spend Wise',
               style: TextStyle(fontSize: 24, color: Colors.white),

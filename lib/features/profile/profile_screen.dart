@@ -5,7 +5,6 @@ import 'package:expense_tracker/features/auth/login/login_screen.dart';
 import 'package:expense_tracker/features/profile/edit_screen.dart';
 import 'package:expense_tracker/features/profile/setting/setting_screen.dart';
 import 'package:expense_tracker/features/profile/widget/profile_option.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,7 +27,7 @@ class ProfileScreen extends StatelessWidget {
 
             return Column(
               children: [
-                const SizedBox(height: 40),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                 Center(
                   child: Column(
                     children: [
@@ -39,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
                             ? NetworkImage(photoUrl)
                             : AssetImage('assets/images/person.png'),
                       ),
-                      SizedBox(height: 15),
+                      SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                       Text(
                         "Username",
                         style: TextStyle(
@@ -57,7 +56,7 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 40),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(

@@ -1,6 +1,5 @@
 
 import 'dart:io';
-
 import 'package:expense_tracker/core/model/user.dart';
 import 'package:expense_tracker/features/auth/cubit/logic.dart';
 import 'package:expense_tracker/features/auth/cubit/state.dart';
