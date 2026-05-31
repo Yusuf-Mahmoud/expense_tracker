@@ -21,7 +21,6 @@ A Flutter application for tracking personal expenses with user authentication, l
 
 <img width="1080" height="2424" alt="Screenshot_1778845905" src="https://github.com/user-attachments/assets/65124393-c454-415a-bbc7-dc50a00b669e" />
 <img width="1080" height="2424" alt="Screenshot_1778845902" src="https://github.com/user-attachments/assets/8736dab8-c6d7-48d6-adbc-70be092b1a2f" />
-<img width="1080" height="2424" alt="Screenshot_1778846107" src="https://github.com/user-attachments/assets/f5c69179-115a-42a2-bf46-3eecebea9fde" />
 <img width="1080" height="2424" alt="Screenshot_1778846096" src="https://github.com/user-attachments/assets/a4dd140c-101c-4b1b-b9cd-eb7d896f90a5" />
 <img width="1080" height="2424" alt="Screenshot_1778845998" src="https://github.com/user-attachments/assets/a337339b-5608-443f-8132-e2d4c849d905" />
 <img width="1080" height="2424" alt="Screenshot_1778845987" src="https://github.com/user-attachments/assets/88f35aae-22e9-4c5c-8566-6efaa411ed5e" />
@@ -29,4 +28,5 @@ A Flutter application for tracking personal expenses with user authentication, l
 <img width="1080" height="2424" alt="Screenshot_1778845919" src="https://github.com/user-attachments/assets/cc466607-0779-40e7-893a-5f48712666f1" />
 <img width="1080" height="2424" alt="Screenshot_1778845914" src="https://github.com/user-attachments/assets/d65f42b8-cbe9-45d1-a28c-5efcc056c0c8" />
 <img width="1080" height="2424" alt="Screenshot_1778845908" src="https://github.com/user-attachments/assets/275aec86-a65d-4480-a183-da70514146a7" />
+<img width="1080" height="2424" alt="Screenshot_1778846107" src="https://github.com/user-attachments/assets/f5c69179-115a-42a2-bf46-3eecebea9fde" />
 
